@@ -20,7 +20,7 @@
 
 extern "C" {
 
-void AbslInternalSpinLockDelay(std::atomic<uint32_t>* /* lock_word */,
+void AbslInternalSpinLockDelay_InworldRenamed(std::atomic<uint32_t>* /* lock_word */,
                                uint32_t /* value */, int loop,
                                absl::base_internal::SchedulingMode /* mode */) {
   if (loop == 0) {
@@ -31,7 +31,7 @@ void AbslInternalSpinLockDelay(std::atomic<uint32_t>* /* lock_word */,
   }
 }
 
-void AbslInternalSpinLockWake(std::atomic<uint32_t>* /* lock_word */,
+void AbslInternalSpinLockWake_InworldRenamed(std::atomic<uint32_t>* /* lock_word */,
                               bool /* all */) {}
 
 }  // extern "C"

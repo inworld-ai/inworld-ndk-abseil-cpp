@@ -58,7 +58,7 @@ void SpinLockWake(std::atomic<uint32_t> *w, bool all);
 void SpinLockDelay(std::atomic<uint32_t> *w, uint32_t value, int loop,
                    base_internal::SchedulingMode scheduling_mode);
 
-// Helper used by AbslInternalSpinLockDelay.
+// Helper used by AbslInternalSpinLockDelay_InworldRenamed.
 // Returns a suggested delay in nanoseconds for iteration number "loop".
 int SpinLockSuggestedDelayNS(int loop);
 
@@ -73,21 +73,21 @@ ABSL_NAMESPACE_END
 // By changing our extension points to be extern "C", we dodge this
 // check.
 extern "C" {
-void AbslInternalSpinLockWake(std::atomic<uint32_t> *w, bool all);
-void AbslInternalSpinLockDelay(
+void AbslInternalSpinLockWake_InworldRenamed(std::atomic<uint32_t> *w, bool all);
+void AbslInternalSpinLockDelay_InworldRenamed(
     std::atomic<uint32_t> *w, uint32_t value, int loop,
     absl::base_internal::SchedulingMode scheduling_mode);
 }
 
 inline void absl::base_internal::SpinLockWake(std::atomic<uint32_t> *w,
                                               bool all) {
-  AbslInternalSpinLockWake(w, all);
+  AbslInternalSpinLockWake_InworldRenamed(w, all);
 }
 
 inline void absl::base_internal::SpinLockDelay(
     std::atomic<uint32_t> *w, uint32_t value, int loop,
     absl::base_internal::SchedulingMode scheduling_mode) {
-  AbslInternalSpinLockDelay(w, value, loop, scheduling_mode);
+  AbslInternalSpinLockDelay_InworldRenamed(w, value, loop, scheduling_mode);
 }
 
 #endif  // ABSL_BASE_INTERNAL_SPINLOCK_WAIT_H_
