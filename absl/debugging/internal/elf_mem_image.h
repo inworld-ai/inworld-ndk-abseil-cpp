@@ -33,7 +33,7 @@
 
 #if defined(__ELF__) && defined(__GLIBC__) && !defined(__native_client__) && \
     !defined(__asmjs__) && !defined(__wasm__)
-#define ABSL_HAVE_ELF_MEM_IMAGE 1
+//#define ABSL_HAVE_ELF_MEM_IMAGE 1
 #endif
 
 #ifdef ABSL_HAVE_ELF_MEM_IMAGE
