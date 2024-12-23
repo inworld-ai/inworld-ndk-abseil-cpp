@@ -39,6 +39,7 @@
 // The current implementation uses O(|V|+|E|) space.
 
 #include <cstdint>
+#include <limits>
 
 #include "absl/base/config.h"
 

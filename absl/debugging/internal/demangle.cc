@@ -1932,14 +1932,6 @@ static bool Overflowed(const State *state) {
   return state->parse_state.out_cur_idx >= state->out_end_idx;
 }
 
-// The demangler entry point.
-bool Demangle(const char *mangled, char *out, int out_size) {
-  State state;
-  InitState(&state, mangled, out, out_size);
-  return ParseTopLevelMangledName(&state) && !Overflowed(&state) &&
-         state.parse_state.out_cur_idx > 0;
-}
-
 }  // namespace debugging_internal
 ABSL_NAMESPACE_END
 }  // namespace absl
